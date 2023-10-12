@@ -1,13 +1,12 @@
 package com.EGGNews.EGGNEWS.servicios;
 
+import com.EGGNews.EGGNEWS.Excepciones.Exception1;
 import com.EGGNews.EGGNEWS.entidades.Noticia;
 import com.EGGNews.EGGNEWS.repositorios.NoticiaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,15 +15,15 @@ public class NoticiaServicio {
 
 
     @Autowired
-    private NoticiaRepositorio NR;
-
+   NoticiaRepositorio NR;
 
     public List<Noticia> consultaNoticias() {
         return NR.findAll();
     }
 
     @Transactional
-    public void crearNoticia(String titulo, String cuerpo) {
+    public void crearNoticia(String titulo, String cuerpo) throws Exception1 {
+        validar(titulo,cuerpo);
         Noticia N = new Noticia();
         System.out.println(N.getId());
         N.setTitulo(titulo);
@@ -52,6 +51,15 @@ public class NoticiaServicio {
         if (resp.isPresent()) {
             Noticia N = resp.get();
             N.setAlta(!N.isAlta());
+        }
+    }
+
+    private void validar(String titulo, String cuerpo) throws Exception1 {
+        if (titulo.isEmpty() || titulo == null ){
+            throw new Exception1("El titulo no puede estar vacio o nulo");
+        }
+        if (cuerpo.isEmpty() || cuerpo == null ){
+            throw new Exception1("El cuerpo no puede estar vacio o nulo");
         }
     }
 
