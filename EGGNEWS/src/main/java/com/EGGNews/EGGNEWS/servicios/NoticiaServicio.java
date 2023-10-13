@@ -15,15 +15,16 @@ public class NoticiaServicio {
 
 
     @Autowired
-   NoticiaRepositorio NR;
+    NoticiaRepositorio NR;
 
     public List<Noticia> consultaNoticias() {
+
         return NR.findAll();
     }
 
     @Transactional
     public void crearNoticia(String titulo, String cuerpo) throws Exception1 {
-        validar(titulo,cuerpo);
+        validar(titulo, cuerpo);
         Noticia N = new Noticia();
         System.out.println(N.getId());
         N.setTitulo(titulo);
@@ -33,7 +34,7 @@ public class NoticiaServicio {
     }
 
     @Transactional
-    public void modificarNoticia(Integer id, String titulo, String cuerpo) {
+    public void modificarNoticia(Integer id, String titulo, String cuerpo) throws Exception1 {
 
         Optional<Noticia> resp = NR.findById(id);
         if (resp.isPresent()) {
@@ -43,6 +44,10 @@ public class NoticiaServicio {
             Nm.setCuerpo(cuerpo);
             NR.save(Nm);
         }
+    }
+
+    public Noticia mostrarporID(Integer id) {
+        return NR.getOne(id);
     }
 
     @Transactional
@@ -55,10 +60,10 @@ public class NoticiaServicio {
     }
 
     private void validar(String titulo, String cuerpo) throws Exception1 {
-        if (titulo.isEmpty() || titulo == null ){
+        if (titulo.isEmpty() || titulo == null) {
             throw new Exception1("El titulo no puede estar vacio o nulo");
         }
-        if (cuerpo.isEmpty() || cuerpo == null ){
+        if (cuerpo.isEmpty() || cuerpo == null) {
             throw new Exception1("El cuerpo no puede estar vacio o nulo");
         }
     }

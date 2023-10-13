@@ -6,12 +6,12 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Modificando</title>
 </head>
 
 <body>
-    <form action="/Noticia/panel-admin" method="post">
-
+    <form action="/Noticia/noticiamodificada" method="post">
+        <input hidden type="Number" name="id" >
         <div class="mb-3">
             <label for="Titulo" class="form-label">Ingrese el titulo de la noticia</label>
             <input type="text" name="titulo" class="form-control" id="Titulo">
@@ -20,8 +20,6 @@
         <div class="mb-3">
             <label for="Cuerpo" class="form-label">Coloque el cuerpo de la noticia</label>
             <input type="text" name="cuerpo" class="form-control" id="Cuerpo">
-
-
         </div>
 
         <button type="submit" class="btn btn-primary">Cargar</button>
@@ -29,13 +27,13 @@
     </form>
 
     <div th:if="${Exito!=null}" class=" alert alert-success" role="alert">
-        <p th:text="${A}"></p>
+        <p th:text="${Exito}"></p>
     </div>
 
     <div th:if="${Error!=null}" class=" alert alert-danger" role="alert">
-        <p th:text="${B}"></p>
-    </div> 
- 
+        <p th:text="${Error}"></p>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
