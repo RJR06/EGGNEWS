@@ -1,6 +1,6 @@
 package com.EGGNews.EGGNEWS.controladores;
 
-import com.EGGNews.EGGNEWS.Excepciones.Exception1;
+import com.EGGNews.EGGNEWS.excepciones.Exception1;
 import com.EGGNews.EGGNEWS.entidades.Noticia;
 import com.EGGNews.EGGNEWS.servicios.NoticiaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.util.List;
 
 @Controller

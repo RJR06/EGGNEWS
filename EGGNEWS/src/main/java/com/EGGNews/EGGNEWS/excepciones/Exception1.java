@@ -1,4 +1,4 @@
-package com.EGGNews.EGGNEWS.Excepciones;
+package com.EGGNews.EGGNEWS.excepciones;
 
 public class Exception1 extends Exception{
 

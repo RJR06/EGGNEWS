@@ -1,6 +1,6 @@
 package com.EGGNews.EGGNEWS.servicios;
 
-import com.EGGNews.EGGNEWS.Excepciones.Exception1;
+import com.EGGNews.EGGNEWS.excepciones.Exception1;
 import com.EGGNews.EGGNEWS.entidades.Noticia;
 import com.EGGNews.EGGNEWS.repositorios.NoticiaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,10 @@ import java.util.Optional;
 
 @Service
 public class NoticiaServicio {
-
-
     @Autowired
     NoticiaRepositorio NR;
 
     public List<Noticia> consultaNoticias() {
-
         return NR.findAll();
     }
 
@@ -35,8 +32,10 @@ public class NoticiaServicio {
 
     @Transactional
     public void modificarNoticia(Integer id, String titulo, String cuerpo) throws Exception1 {
+        validar(titulo, cuerpo);
 
         Optional<Noticia> resp = NR.findById(id);
+
         if (resp.isPresent()) {
             Noticia Nm = new Noticia();
             Nm = resp.get();
@@ -44,6 +43,7 @@ public class NoticiaServicio {
             Nm.setCuerpo(cuerpo);
             NR.save(Nm);
         }
+
     }
 
     public Noticia mostrarporID(Integer id) {
