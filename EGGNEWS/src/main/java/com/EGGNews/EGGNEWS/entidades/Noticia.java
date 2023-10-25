@@ -10,8 +10,7 @@ public class Noticia {
     private String titulo;
     private String cuerpo;
     private boolean alta;
-    @ManyToOne
-    private Periodista creador;
+
 
     public Noticia() {
     }
