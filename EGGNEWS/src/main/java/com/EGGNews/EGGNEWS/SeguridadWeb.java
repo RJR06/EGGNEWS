@@ -41,6 +41,9 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .and().logout()
                   .logoutUrl("/logout")
                   .logoutSuccessUrl("/login")
-                  .permitAll();
+                  .permitAll()
+                .and().csrf()
+                .disable();
+
     }
 }
