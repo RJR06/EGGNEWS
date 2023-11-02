@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-5 mb-5">
         <h2>Registro</h2>
-        <form class="formulario" th:action="@{/registro}" method="POST">
+        <form class="formulario" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
 
             <div th:if="${error !=null}" class="card text-white bg-danger mb-3 mensajeError mt-3 d-flex"
                 style="width: 18rem;">
@@ -26,12 +26,18 @@
                 <input type="text" class="form-control" name="nombreUsuario" placeholder="Ingresa tu nombre"
                     th:value="${nombre}">
             </div>
+
+            <div class="col-md-4">
+                <label  class="form-label" >Ingrese una imagen</label><br>
+                <input type="file" class="form-control" name="archivo" placeholder="Añadir imagen">
+            </div>
           
             <div class="form-group">
                 <label for="password">Contraseña:</label>
                 <input type="password" class="form-control" name="password" placeholder="Ingresa tu contraseña"
                     th:value="${password}">
             </div>
+
             <div class="form-group">
                 <label for="password">Repetir contraseña:</label>
                 <input type="password" class="form-control" name="password2" placeholder="Repite tu contraseña"

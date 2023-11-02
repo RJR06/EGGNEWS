@@ -17,9 +17,20 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
+    @OneToOne
+    private Imagen imagen;
+
     private boolean estado;
 
     public Usuario() {
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
     }
 
     public Long getId() {

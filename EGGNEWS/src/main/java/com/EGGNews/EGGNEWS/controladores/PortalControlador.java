@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,10 +32,10 @@ public class PortalControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombreUsuario, @RequestParam String password, String password2, ModelMap mod) {
+    public String registro(@RequestParam String nombreUsuario, @RequestParam String password, String password2, ModelMap mod, MultipartFile archivo) {
 
         try {
-            US.registrar(nombreUsuario, password, password2);
+            US.registrar(archivo, nombreUsuario, password, password2);
             mod.put("exito", "Usuario registrado correctamente.");
             return "index.html";
 
